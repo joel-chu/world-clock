@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "world-clock",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "license": "MIT",
   "scripts": {
     "build": "preact build",
@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "bootstrap": "^4.5.2",
+    "dayjs": "^1.9.1",
     "preact": "^10.3.2",
     "preact-render-to-string": "^5.1.4",
     "preact-router": "^3.2.1"
