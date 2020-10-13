@@ -1,5 +1,6 @@
 import { h } from 'preact'
 import { useEffect, useState } from "preact/hooks"
+import style from './style.css'
 
 import dayjs from '../../lib/dayjs'
 
@@ -15,15 +16,17 @@ const Clock = ({ tz }) => {
 	useEffect(() => {
 		let timer = setInterval(() => setTime(getNow(tz), 1000))
 		return () => clearInterval(timer)
-	}, [tz])
+	}, [tz]) // the key is to provide the dep data
 
 	return (
-    <div class="card" style="width: 18rem;">
+    <div class="card col-sm-4">
       <div class="card-body">
-        <h5 class="card-title">{tz}</h5>
+        <h5 class="card-title text-info">{tz}</h5>
         <h6 class="card-subtitle mb-2 text-muted">{time.format('dddd, MMMM D, YYYY')}</h6>
         <p class="card-text">
-          {time.format('h:mm:ss A')}
+          <span class={style.clockText}>
+            {time.format('h:mm:ss A')}
+          </span>
         </p>
     </div>
   </div>
