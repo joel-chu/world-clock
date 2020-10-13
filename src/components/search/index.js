@@ -2,8 +2,26 @@
 import { timeZonesNames } from "@vvo/tzdb"
 
 
-const SearchTimezone = () => {
+const SearchTimezone = ({resultCallback}) => {
+  // don't use the func directly in the onClick , otherwise it will fire when it render 
+  const cb = tzn => {
+    return () => {
+      resultCallback(tzn)
+    }
+  }
 
+
+  return (
+    <div class="list-group">
+    {
+      timeZonesNames.map((tzn, i) => (
+        <div class="list-group-item" id={'item' + i} onClick={cb(tzn)}>{tzn}</div>
+      ))
+    }
+    </div>
+  )
+
+  /*
   return (
     <div class="input-group">
       <input type="text" class="form-control" aria-label="Text input with dropdown button" />
@@ -21,6 +39,7 @@ const SearchTimezone = () => {
       </div>
     </div>
   )
+  */
 }
 
 export default SearchTimezone

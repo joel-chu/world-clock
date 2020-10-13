@@ -15,7 +15,7 @@ const Clock = ({ tz }) => {
 	useEffect(() => {
 		let timer = setInterval(() => setTime(getNow(tz), 1000))
 		return () => clearInterval(timer)
-	}, [])
+	}, [tz])
 
 	return (
     <div class="card" style="width: 18rem;">
