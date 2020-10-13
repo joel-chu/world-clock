@@ -13,7 +13,7 @@ class Home extends Component {
 	state = { userTz, otherTzs: [] }
 	// pass to the add new timezone form
 	resultCallback = tz => {
-		console.log('add new timezone', tz)
+		// console.log('add new timezone', tz)
 		// check if this timezone already existed
 		const all = [this.state.userTz].concat(this.state.otherTzs)
 		console.log('everything', all)
@@ -28,7 +28,7 @@ class Home extends Component {
 
 	onChangeCallback = e => {
 		let { value } = e.target
-		console.log('select onChange', value)
+		// console.log('select onChange', value)
 		this.setState({ userTz: value })
 	}
 
