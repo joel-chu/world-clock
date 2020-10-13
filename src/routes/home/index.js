@@ -1,7 +1,7 @@
 import { h, render, Component } from 'preact'
 import style from './style.css'
 import dayjs from '../../lib/dayjs'
-import Clock from '../../components/clock'
+import ClockDisplay from '../../components/clock-display'
 import SearchTimezone from '../../components/search'
 import TimezoneSelect from '../../components/timezone-select'
 
@@ -32,6 +32,18 @@ class Home extends Component {
 		this.setState({ userTz: value })
 	}
 
+  onHourMinuteChangeCallback = (hours, minutes) => {
+
+	}
+
+  closeClock = tz => {
+		return () => {
+			this.setState({
+				otherTzs: this.state.otherTzs.filter(item => tz !== item)
+			})
+		}
+	}
+
 	render() {
 		return (
 			<div class={style.home}>
@@ -49,12 +61,12 @@ class Home extends Component {
 
 				<div class="row">
 					<div class="col-sm-4">
-						<Clock tz={this.state.userTz} />
+						<ClockDisplay tz={this.state.userTz} />
 					</div>
 					{
 						this.state.otherTzs.map((otz, i) => (
 							<div class="col-sm-4">
-								<Clock tz={otz} id={'clock-' + i} canClose="1" />
+								<ClockDisplay tz={otz} id={'clock-' + i} canClose="1" closeClock={this.closeClock} />
 							</div>
 						))
 					}
