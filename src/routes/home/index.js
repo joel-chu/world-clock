@@ -48,10 +48,14 @@ class Home extends Component {
 				</div>
 
 				<div class="row">
-					<Clock tz={this.state.userTz} />
+					<div class="col-sm-4">
+						<Clock tz={this.state.userTz} />
+					</div>
 					{
 						this.state.otherTzs.map((otz, i) => (
-							<Clock tz={otz} id={'clock-' + i} />
+							<div class="col-sm-4">
+								<Clock tz={otz} id={'clock-' + i} canClose="1" />
+							</div>
 						))
 					}
 				</div>

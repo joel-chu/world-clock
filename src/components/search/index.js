@@ -27,9 +27,9 @@ class SearchTimezone extends Component {
         <div class="form-group">
           <label>Add new time zone</label>
           <TimezoneSelect onChangeCallback={this.onChangeCallback.bind(this)} initTz="" />
-          <input class="form-control col-sm-5" value={this.state.newTz} name="newTimezoneToAdd" />
+          <input class="form-control col-sm-5" value={this.state.newTz} name="newTimezoneToAdd" readonly />
           <br />
-          <button class="btn btn-primary" onClick={this.addNewTz.bind(this)}>
+          <button class="btn btn-primary" onClick={this.addNewTz.bind(this)} disabled={this.state.newTz === ''}>
             ADD NEW TIMEZONE
           </button>
         </div>
