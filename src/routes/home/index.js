@@ -16,7 +16,7 @@ class Home extends Component {
 		// console.log('add new timezone', tz)
 		// check if this timezone already existed
 		const all = [this.state.userTz].concat(this.state.otherTzs)
-		console.log('everything', all)
+		// console.log('everything', all)
 		const found = all.filter(item => item === tz)
 		if (!found.length) {
 			// this.state.otherTzs.push(tz)
