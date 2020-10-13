@@ -1,6 +1,6 @@
-import { h } from 'preact';
-import { Link } from 'preact-router/match';
-import style from './style.css';
+import { h } from 'preact'
+import { Link } from 'preact-router/match'
+import style from './style.css'
 
 const Header = () => (
 	<header class={style.header}>
@@ -9,6 +9,6 @@ const Header = () => (
 			<Link activeClassName={style.active} href="https://github.com/joel-chu/world-clock">Github</Link>
 		</nav>
 	</header>
-);
+)
 
-export default Header;
+export default Header
