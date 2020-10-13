@@ -3,14 +3,14 @@
 // so we need to separate the clock and the form
 import Clock from '../clock'
 
-const ClockDisplay = ({ tz, canClose }) => {
+const ClockDisplay = ({ tz, canClose, closeClock }) => {
 
 
   return (
     <div class="card">
       <div class="card-body">
         {
-          canClose && <button class="close">&times;</button>
+          canClose && <button class="close" onClick={closeClock(tz)}>&times;</button>
         }
         <h5 class="card-title text-info">{tz}</h5>
         <Clock tz={tz} />

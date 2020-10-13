@@ -32,6 +32,14 @@ class Home extends Component {
 		this.setState({ userTz: value })
 	}
 
+  closeClock = tz => {
+		return () => {
+			this.setState({
+				otherTzs: this.state.otherTzs.filter(item => tz !== item)
+			})
+		}
+	}
+
 	render() {
 		return (
 			<div class={style.home}>
@@ -54,7 +62,7 @@ class Home extends Component {
 					{
 						this.state.otherTzs.map((otz, i) => (
 							<div class="col-sm-4">
-								<ClockDisplay tz={otz} id={'clock-' + i} canClose="1" />
+								<ClockDisplay tz={otz} id={'clock-' + i} canClose="1" closeClock={this.closeClock} />
 							</div>
 						))
 					}
