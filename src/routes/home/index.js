@@ -11,10 +11,19 @@ const userTz = dayjs.tz.guess()
 class Home extends Component {
 
 	state = { userTz, otherTzs: [] }
-
+	// pass to the add new timezone form
 	resultCallback = tz => {
-		console.log('timezone', tz)
-		// this.setState({ userTz: tz })
+		console.log('add new timezone', tz)
+		// check if this timezone already existed
+		const all = [this.state.userTz].concat(this.state.otherTzs)
+		console.log('everything', all)
+		const found = all.filter(item => item === tz)
+		if (!found.length) {
+			// this.state.otherTzs.push(tz)
+			this.setState({
+				otherTzs: this.state.otherTzs.concat([tz])
+			})
+		}
 	}
 
 	onChangeCallback = e => {
@@ -41,12 +50,12 @@ class Home extends Component {
 				<div class="row">
 					<Clock tz={this.state.userTz} />
 					{
-						otherTzs.map((otz, i) => (
+						this.state.otherTzs.map((otz, i) => (
 							<Clock tz={otz} id={'clock-' + i} />
 						))
 					}
 				</div>
-
+				<br />
 				<div class="alert alert-info">
 
 					<SearchTimezone resultCallback={this.resultCallback} />

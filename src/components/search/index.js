@@ -1,45 +1,41 @@
 // a component to search for timezone to add
-import { timeZonesNames } from "@vvo/tzdb"
+import { h, render, Component } from 'preact'
+import TimezoneSelect from '../timezone-select'
 
+class SearchTimezone extends Component {
+//= ({resultCallback}) => {
+  state = { newTz: '' }
 
-const SearchTimezone = ({resultCallback}) => {
-  // don't use the func directly in the onClick , otherwise it will fire when it render 
-  const cb = tzn => {
-    return () => {
-      resultCallback(tzn)
-    }
+  // wrapping one with another to pass the value up
+  onChangeCallback(e)  {
+    e.preventDefault()
+    let { value } = e.target
+    this.setState({ newTz: value })
+  }
+
+  addNewTz(e) {
+    e.preventDefault()
+    this.props.resultCallback(this.state.newTz)
+    // reset it
+    this.setState({ newTz: '' })
   }
 
 
-  return (
-    <div class="list-group">
-    {
-      timeZonesNames.map((tzn, i) => (
-        <div class="list-group-item" id={'item' + i} onClick={cb(tzn)}>{tzn}</div>
-      ))
-    }
-    </div>
-  )
-
-  /*
-  return (
-    <div class="input-group">
-      <input type="text" class="form-control" aria-label="Text input with dropdown button" />
-      <div class="input-group-append">
-        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          SELECT TIMEZONE
-        </button>
-        <div class="dropdown-menu">
-          {
-            timeZonesNames.map((tzn, i) => (
-              <a class="dropdown-item" href="#" id={'item-' + i}>{tzn}</a>
-            ))
-          }
+  render() {
+    return (
+      <form class="form-line">
+        <div class="form-group">
+          <label>Add new time zone</label>
+          <TimezoneSelect onChangeCallback={this.onChangeCallback.bind(this)} initTz="" />
+          <input class="form-control col-sm-5" value={this.state.newTz} name="newTimezoneToAdd" />
+          <br />
+          <button class="btn btn-primary" onClick={this.addNewTz.bind(this)}>
+            ADD NEW TIMEZONE
+          </button>
         </div>
-      </div>
-    </div>
-  )
-  */
+      </form>
+    )
+  }
 }
 
 export default SearchTimezone
