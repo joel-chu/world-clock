@@ -32,6 +32,10 @@ class Home extends Component {
 		this.setState({ userTz: value })
 	}
 
+  onHourMinuteChangeCallback = (hours, minutes) => {
+
+	}
+
   closeClock = tz => {
 		return () => {
 			this.setState({

@@ -2,6 +2,7 @@
 // it keep render every second which is not good
 // so we need to separate the clock and the form
 import Clock from '../clock'
+import TimeInput from '../TimeInput'
 
 const ClockDisplay = ({ tz, canClose, closeClock }) => {
 
@@ -14,6 +15,7 @@ const ClockDisplay = ({ tz, canClose, closeClock }) => {
         }
         <h5 class="card-title text-info">{tz}</h5>
         <Clock tz={tz} />
+        
       </div>
     </div>
   )
