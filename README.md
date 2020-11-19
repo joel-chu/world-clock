@@ -2,6 +2,8 @@
 
 Just a quick clock app for finding out the time in different timezone, using [preactX](https://preactjs.com/)
 
+Visit the [github pages demo site](https://joel-chu.github.io/world-clock/) 
+
 ## requirement
 
 Let's think about what do I want with this app
